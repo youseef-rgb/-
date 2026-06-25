@@ -1,6 +1,5 @@
-npm i @vercel/analytics
-import { Analytics } from "@vercel/analytics/next"
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 
 <head>
@@ -24,6 +23,9 @@ box-sizing:border-box;
 }
 
 
+
+
+ 
 body{
 
 min-height:100vh;
@@ -796,6 +798,14 @@ closeArchive();
 </script>
 
 
+<script>
+window.va = window.va || function () {
+  (window.vaq = window.vaq || []).push(arguments);
+};
+</script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+ 
 </body>
 
 </html>
