@@ -558,19 +558,31 @@ audio = صوت
 
 const messages=[
 
+{
+date:"25 يونيو 2026",
+
+type:"both",
+
+text:
+"❤️اي الصوت الحلو ده❤️",
+
+audio:
+ "WhatsApp Ptt 2026-05-13 at 17.56.10.mp3"
+
+},
 
 
-  
 
 {
-
 date:"23 يونيو 2026",
 
 type:"text",
 
-content:
+text:
 
 "✨✨كتكوت ابو الليل الحزين✨✨\nانا عارف ان الدنيا دايه عليك دامد 🥺\n بس انا دبمك و مش هسيبك 🙃\n هي solo squad بس ممكن نخليها  Duo Squad 😁😁"
+
+
 
 
 },
@@ -583,10 +595,23 @@ date:"22 يونيو 2026",
 
 type:"text",
 
-content:
+text:
 
-"حتى الأيام الصعبةبتعدي، خدي نفس واهدئي، أنتِ أقوى مما تتخيلي."
+"حتى الأيام الصعبة بتعدي، خدي نفس واهدئي، أنتِ أقوى مما تتخيلي."
 
+},
+
+
+
+{
+
+date:"21 يونيو 2026",
+
+type:"audio",
+
+audio:
+
+"Focus.mp3"
 
 }
 
@@ -600,32 +625,60 @@ content:
 function showMessage(item){
 
 
-document.getElementById("message").innerHTML="";
-
-document.getElementById("audioBox").style.display="none";
-
+let message =
+document.getElementById("message");
 
 
-if(item.type==="text"){
+let audioBox =
+document.getElementById("audioBox");
 
 
-document.getElementById("message").innerText=item.content;
+let audio =
+document.getElementById("audio");
+
+
+
+message.innerText="";
+
+audioBox.style.display="none";
+
+
+audio.pause();
+
+audio.src="";
+
+
+
+
+// عرض الكتابة
+
+if(item.text){
+
+
+message.innerText=item.text;
 
 
 }
 
 
 
-else{
+
+// عرض الصوت
+
+if(item.audio){
 
 
-document.getElementById("audioBox").style.display="block";
+audioBox.style.display="block";
 
 
-document.getElementById("audio").src=item.content;
+audio.src=item.audio;
+
+
+audio.load();
 
 
 }
+
 
 
 
@@ -633,6 +686,7 @@ document.getElementById("date").innerText=item.date;
 
 
 }
+
 
 
 
@@ -661,7 +715,6 @@ document.getElementById("paper").style.display="block";
 showMessage(messages[0]);
 
 
-
 localStorage.setItem("opened","true");
 
 
@@ -675,15 +728,12 @@ localStorage.setItem("opened","true");
 
 
 
+
 function openArchive(){
 
 
-document
-.getElementById("archive")
-.classList.add("show");
-
-
 let list=document.getElementById("archiveList");
+
 
 list.innerHTML="";
 
@@ -704,6 +754,11 @@ ${messages[i].date}
 
 }
 
+
+
+document
+.getElementById("archive")
+.classList.add("show");
 
 
 }
@@ -735,23 +790,6 @@ closeArchive();
 
 
 }
-
-
-
-
-function oldMessage(i){
-
-
-showMessage(messages[i]);
-
-
-document
-.getElementById("archive")
-.classList.remove("show");
-
-
-}
-
 
 
 </script>
